@@ -8,45 +8,11 @@ var multipart = require('connect-multiparty');
 var fs = require('fs');
 var multipartMiddleware = multipart();
 const {Client} = require('pg');
-/*
-const client = new Client({
-	connectionString: process.env.DATABASE_URL,
-  	ssl: true,
-});
-*/
-/*
-const client = new Client({
-	user: 'jbzmhnadhzniyq',
-	host: 'ec2-54-83-54-224.compute-1.amazonaws.com',
-	database: 'dabbopkfsogfm3',
-	password: '8d39a3da73b326279ccb084bed677cb2ba32c5f4cc832e244ce66f00a635fd8b',
-	port: 5432,
-});
-*/
-/*
-const client = new Client({
-	user: 'fpooidqomjvwsp',
-	host: 'ec2-107-22-167-179.compute-1.amazonaws.com',
-	database: 'devk8p9unf7fku',
-	password: '304f87e1b64f51b77777ef4bc76cfaaf2f033c9d9de50bfa30cd49cb9ffc0363',
-	port: 5432,
-});
-**/
 
 const client = new Client({
-	connectionString: 'postgres://jbzmhnadhzniyq:8d39a3da73b326279ccb084bed677cb2ba32c5f4cc832e244ce66f00a635fd8b@ec2-54-83-54-224.compute-1.amazonaws.com:5432/dabbopkfsogfm3'
+	connectionString: 'postgres://idoyjtdbqfrkon:dd727fecbe31a2b375cc21c98d545b06de308805f493988282a619b6b7b1d012@ec2-54-243-137-182.compute-1.amazonaws.com:5432/d965mnovgftjdv'
 })
-
-/*
-var con=mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'n0m3l0',
-	database:'node'
-});
-
-con.connect();
-*/
+//postgres://lfkrclwzdnszkh:0d40c3a9681df3a956f34f3700076d4288cb3d3b6c465b78429abe729c5d0c4e@ec2-54-204-39-46.compute-1.amazonaws.com:5432/d1see1r23f8l46
 client.connect();
 var app=express();
 app.set('view engine','pug');
