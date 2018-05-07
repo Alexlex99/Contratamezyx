@@ -14,8 +14,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node"
-  },
+    "start": "node apps.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Alexlex99/Contratamezyx.git"
