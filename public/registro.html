@@ -10,6 +10,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link rel="stylesheet" type="text/css" href="css/snackbar.css">
+	<!--<script type="text/javascript">
+		 function soloLetras(e){
+                key = e.keyCode || e.which;
+                tecla = String.fromCharCode(key).toLowerCase();
+                letras = " áéíóúabcdefghijklmnñopqrstuvwxyz0123456789";
+                especiales = [8];
+
+                tecla_especial = false
+                for(var i in especiales){
+                    if(key == especiales[i]){
+                        tecla_especial = true;
+                        break;
+                    } 
+                }
+
+                if(letras.indexOf(tecla)==-1 && !tecla_especial)
+                return false;
+            }
+	</script>-->
 </head>
 <body id="indexInvitado">
 	<nav class="navbar fixed-top navbar-expand-md navbar-light" id="barraNavegacion">
@@ -43,32 +62,32 @@
 			<form>
 				<div class="row">
 					<div class="col-2">Email</div>
-					<div class="col"><input class="form-control" type="email" name="mail" style="width: 100%"></div>
+					<div class="col"><input class="form-control" type="email" name="mail" style="width: 100%" onkeypress="return validaPlaca(event)" id="email" maxlength="30"></div>
 				</div>
 				<div class="row" style="height: 5vh"></div>
 				<div class="row">
 					<div class="col-2">Contraseña</div>
-					<div class="col"><input class="form-control" type="password" name="pass" style="width: 100%"></div>
+					<div class="col"><input class="form-control" type="password" name="pass" style="width: 100%" onkeypress="return validaPlaca(event)" id="pas1" maxlength="20"> </div>
 				</div>
 				<div class="row" style="height: 5vh"></div>
 				<div class="row">
 					<div class="col-2">Repite tu contraseña</div>
-					<div class="col"><input class="form-control" type="password" name="regis-pass2" style="width: 100%"></div>
+					<div class="col"><input class="form-control" id="pas2" type="password" name="regis-pass2" style="width: 100%" onkeypress="return validaPlaca(event)" maxlength="20"></div>
 				</div>
 				<div class="row" style="height: 5vh"></div>
-				<div class="row">
+				<div class="row">	
 					<div class="col-2">Nombre</div>
-					<div class="col"><input class="form-control" type="text" name="nombre" style="width: 100%" onkeypress="return soloLetras(event)"></div>
+					<div class="col"><input class="form-control" type="text" name="nombre" style="width: 100%" onkeypress="return soloLetras(event)" id="nomb" maxlength="30"></div>
 				</div>
 				<div class="row" style="height: 5vh"></div>
 				<div class="row">
 					<div class="col-2">Apellidos</div>
-					<div class="col"><input class="form-control" type="text" name="apellidos" style="width: 100%" onkeypress="return soloLetras(event)"></div>
+					<div class="col"><input class="form-control" type="text" name="apellidos" style="width: 100%" onkeypress="return soloLetras(event)" id="ape" maxlength="40"></div>
 				</div>
 				<div class="row" style="height: 5vh"></div>
 				<div class="row">
 					<div class="col" id="button1">
-						<input type="button" class="btn btn-outline-dark" value="Reg&iacute;strate" name="regis-submit" id="registroEnviar"></div>
+						<input type="button" class="btn btn-outline-dark" value="Reg&iacute;strate" name="regis-submit" id="registroEnviar" onclick="validar()"></div>
 				</div>
 			</form>
 		</div>
@@ -123,6 +142,47 @@
 
                 if(letras.indexOf(tecla)==-1 && !tecla_especial)
                 return false;
+            }
+            function validaPlaca(e) {
+key = e.keyCode || e.which; 
+tecla = String.fromCharCode(key).toString();
+ //Se define todo lo que se quiere que se muestre
+caracter = "abcdefghijklmnñopqrstuvwxyz0123456789$.@";
+especiales = [8, 37, 39, 46, 6]; 
+
+tecla_especial = false; 
+for (var i in especiales) {
+      if(key == especiales[i]) { 
+    tecla_especial = true; 
+     break; 
+      }
+} 
+if(caracter.indexOf (tecla) == -1 && !tecla_especial){ 
+    alert('Tecla no aceptada'); 
+    return false; 
+}
+}
+function validar(){
+                var a= document.getElementById('email').value;
+                var b=document.getElementById('nomb').value;
+                
+                var d=document.getElementById('pas1').value;
+                var e=document.getElementById('pas2').value;                                
+                var f=document.getElementById('ape').value;
+                if(a===""|| b==="" || d==="" || e==="" || f===""){
+                    alert("Verifica que ningun campo esté vacío");
+                    document.registro.action='registro.html';
+                }else if (d!==e){
+                    alert("Veriica que las contraseñas sean iguales");
+                    document.registro.action='registro.html';
+                }
+                var c= document.getElementsById('corre').value;                
+                switch(c){
+                case "1": c="@gmail.com"; break;
+                case "2":c="@outlook.com"; break;
+                case "3": c="@hotmail.com"; break;
+                case "4":c="@zoho"; break;
+                }
             }
 	</script>
 </body>
